@@ -4,7 +4,6 @@ from platform import system as os
 OS = os()
 if OS == 'Windows':
     system('') # Activating colors in Windows command prompt
-clear = lambda: system('cls') if OS == 'Windows' else system('clear')
 # colors
 RESET = '\033[0m'
 WHITE = '\033[47m'
@@ -32,8 +31,9 @@ graph = 'Graph of the function y = x / 2:\ny\n' + \
         bspace if (x, y) in points else wspace, range(16)))[::-1], range(16)))[::-1] + 'x'
 # sequence
 fp = open('./sequence.txt', 'r')
+fr = fp.read().split('\n')
 sequence = 'Numbers 5 <= x <= 10 and -10 <= x <= -5:\n' + \
-    ', '.join(filter(lambda x: (fx := float(x)) >= 5 and fx <= 10 or fx <= -5 and fx >= -10, fp.read().split('\n')))
+    ', '.join(filter(lambda x: (fx := float(x)) >= 5 and fx <= 10 or fx <= -5 and fx >= -10, fr))
 fp.close()
 # output
 print(flag, pattern, graph, sequence, sep='\n')
